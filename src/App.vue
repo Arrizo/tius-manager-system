@@ -1,10 +1,10 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-14 14:19:59
+ * @LastEditTime: 2023-05-14 14:55:38
  * @LastEditors: chenzechao
  * @Description: 
- * @FilePath: /tius/tius-manager-system/src/App.vue
+ * @FilePath: /tius-manager-system/src/App.vue
 -->
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
@@ -16,7 +16,6 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
-      <div>git</div>
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
