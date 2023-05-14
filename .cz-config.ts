@@ -1,10 +1,10 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:22:06
- * @LastEditTime: 2023-05-14 12:22:26
+ * @LastEditTime: 2023-05-14 14:26:30
  * @LastEditors: chenzechao
  * @Description: 
- * @FilePath: /tius/tius-manager-system/.cz-config.ts
+ * @FilePath: /tius-manager-system/.cz-config.ts
  */
 module.exports = {
   // 可选类型

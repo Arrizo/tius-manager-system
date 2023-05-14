@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-14 12:37:33
+ * @LastEditTime: 2023-05-14 14:19:59
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius/tius-manager-system/src/App.vue
@@ -16,6 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
+      <div>git</div>
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
