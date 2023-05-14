@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:22:06
- * @LastEditTime: 2023-05-14 14:26:30
+ * @LastEditTime: 2023-05-14 14:49:35
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/.cz-config.ts
@@ -54,7 +54,7 @@ module.exports = {
   ],
 
   // 步骤
-
+  allowCustomScopes: true,
   messages: {
     type: '请选择提交的类型：',
     customScope: '情输入修改的范围(可选)',
