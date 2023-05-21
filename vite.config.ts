@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-14 17:47:17
+ * @LastEditTime: 2023-05-21 19:15:28
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
@@ -9,10 +9,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), viteMockServe({
+    mockPath: 'mock',
+    enable: true,
+  })],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -20,19 +24,11 @@ export default defineConfig({
     }
   },
   server: {
-    server: true,
-    host:'0.0.0.0',
-    proxy: {
-      '/api': {
-        target: 'https://www.baidu.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace()
-
-      }
-    }
+    open: true,
+    host:true
   },
-  scc:{
-    preprocessorOptions:{
+  css: {
+    preprocessorOptions: {
       scss: {
         additionalData: '@import "src/assets/styles/var.scss";'
       },

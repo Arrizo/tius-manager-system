@@ -2,10 +2,10 @@
   "name": "tius",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "server:dev":"vite --mode dev",
+    "server:proxy":"vite --mode proxy",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,9 +15,9 @@
     "element-plus": "^2.3.4",
     "husky": "^8.0.3",
     "init": "0.1.2",
+    "mock": "^0.1.1",
     "mockjs": "^1.1.0",
     "sass": "^1.62.1",
-    "vite-plugin-mock": "^3.0.0",
     "vue": "^3.2.47",
     "vue-router": "4"
   },
@@ -27,6 +27,7 @@
     "cz-customizable": "^7.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
+    "vite-plugin-mock": "^3.0.0",
     "vue-tsc": "^1.4.2"
   },
   "config": {
