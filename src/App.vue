@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-21 22:42:16
+ * @LastEditTime: 2023-05-24 00:50:26
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/App.vue
@@ -16,14 +16,14 @@
 
 <script setup lang="ts">
   import {
-    getName
+  
   } from '@/api/user/index.ts'
   import {
     ref
   } from 'vue'
   const list = ref()
   const handerl = async () => {
-    const res = await getName()
+    const res = await getName(3)
     list.value = res.data.data
   }
 </script>
