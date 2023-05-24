@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "server:dev":"vite --mode dev",
-    "server:proxy":"vite --mode proxy",
+    "server:dev": "vite --mode dev",
+    "server:proxy": "vite --mode proxy",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -17,11 +17,13 @@
     "init": "0.1.2",
     "mock": "^0.1.1",
     "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0",
     "sass": "^1.62.1",
     "vue": "^3.2.47",
-    "vue-router": "4"
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.46.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.0.0",
