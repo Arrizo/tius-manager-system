@@ -11,6 +11,7 @@ specifiers:
   element-plus: ^2.3.4
   husky: ^8.0.3
   init: 0.1.2
+  js-base64: ^3.7.5
   mock: ^0.1.1
   mockjs: ^1.1.0
   nprogress: ^0.2.0
@@ -29,6 +30,7 @@ dependencies:
   element-plus: 2.3.4_vue@3.3.2
   husky: 8.0.3
   init: 0.1.2
+  js-base64: 3.7.5
   mock: 0.1.1
   mockjs: 1.1.0
   nprogress: 0.2.0
@@ -1562,6 +1564,10 @@ packages:
 
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    dev: false
+
+  /js-base64/3.7.5:
+    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==}
     dev: false
 
   /js-tokens/4.0.0:

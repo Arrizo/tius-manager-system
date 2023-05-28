@@ -2,8 +2,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 17:52:05
- * @LastEditTime: 2023-05-25 14:28:19
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-05-28 22:57:23
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/router/index.ts
  */
@@ -28,6 +28,9 @@ const router = createRouter({
         component:()=>import('@/view/setting/index.vue')
       }
     ]
+  },{
+    path:'/login',
+    component:()=>import('@/view/login/index.vue')
   },{
     path:'/:pathMatch(.*)*',
     component:()=>import('@/view/not-found/index.vue')
