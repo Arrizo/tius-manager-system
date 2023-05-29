@@ -1,9 +1,9 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-25 00:01:52
- * @LastEditTime: 2023-05-28 23:22:53
- * @LastEditors: chenzechao
- * @Description: 
+ * @LastEditTime: 2023-05-29 14:51:48
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @Description:
  * @FilePath: /tius-manager-system/src/view/login/index.vue
 -->
 <template>
@@ -26,7 +26,7 @@
         <a-space :size="16">
           <a-checkbox v-model="remenberPassword">记住密码</a-checkbox>
         </a-space>
-               <a-button type="primary" long style="margin-top: 10px;" @click="handlerLogin">登陆</a-button>
+        <a-button type="primary" long style="margin-top: 10px;" @click="handlerLogin">登陆</a-button>
       </a-form>
     </div>
   </div>
@@ -35,29 +35,30 @@
 import { LoginData } from '@/types/user/userInfo'
 import { ref, reactive, onMounted } from 'vue'
 import { encode, decode } from 'js-base64'
+import { useUserStore } from '@/store'
+
 const loginRef = ref()
 const userInfo = reactive<LoginData>(new LoginData())
 const remenberPassword = ref<boolean>(false)
+const userStore = useUserStore()
 const rulesForm = reactive({
   username: [{ required: true, message: '请输入账号' }],
   password: [{ required: true, message: '请输入密码' }]
 })
 
 onMounted(() => {
-  let username = localStorage.getItem('username')
-  if (username) {
-    userInfo.username = username
-    userInfo.password = decode(localStorage.getItem('password') ?? '')
+  let userName = userStore.loginConfig.username
+  if (userName) {
+    userInfo.username = userName
+    userInfo.password = userStore.loginConfig.password
     remenberPassword.value = true
   }
 })
-const handlerLogin=()=>{
-  if(remenberPassword.value){
-    localStorage.setItem('username',userInfo.username)
-    localStorage.setItem('password',encode(userInfo.password))
-  }else{
-    localStorage.removeItem('username')
-    localStorage.removeItem('password')
+const handlerLogin = () => {
+  if (remenberPassword.value) {
+    userStore.updateConfigLogin({ loginConfig: { username: userInfo.username, password: userInfo.password } })
+  } else {
+    userStore.clearConfigLogin()
   }
 }
 </script>
