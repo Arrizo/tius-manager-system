@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-25 00:01:52
- * @LastEditTime: 2023-05-29 14:51:48
+ * @LastEditTime: 2023-05-30 17:33:38
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description:
  * @FilePath: /tius-manager-system/src/view/login/index.vue
@@ -10,8 +10,8 @@
   <div class="login-container">
     <div class="center">
       <a-form ref="loginRef" :model="userInfo" :rules="rulesForm" layout="vertical">
-        <a-form-item field="username" hide-label>
-          <a-input v-model="userInfo.username" placeholder="账号">
+        <a-form-item field="account" hide-label>
+          <a-input v-model="userInfo.account" placeholder="账号">
             <template #prefix>
               <icon-user />
             </template></a-input>
@@ -26,37 +26,52 @@
         <a-space :size="16">
           <a-checkbox v-model="remenberPassword">记住密码</a-checkbox>
         </a-space>
-        <a-button type="primary" long style="margin-top: 10px;" @click="handlerLogin">登陆</a-button>
+        <a-button type="primary" long style="margin-top: 10px;" @click="handlerLogin" :loading="loading">登陆</a-button>
       </a-form>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { LoginData } from '@/types/user/userInfo'
+import { LoginForm } from '@/types/user'
 import { ref, reactive, onMounted } from 'vue'
-import { encode, decode } from 'js-base64'
 import { useUserStore } from '@/store'
+import { Message } from '@arco-design/web-vue';
+
 
 const loginRef = ref()
-const userInfo = reactive<LoginData>(new LoginData())
+const userInfo = reactive<LoginForm>(new LoginForm())
 const remenberPassword = ref<boolean>(false)
+const loading = ref(false)
 const userStore = useUserStore()
 const rulesForm = reactive({
-  username: [{ required: true, message: '请输入账号' }],
+  account: [{ required: true, message: '请输入账号' }],
   password: [{ required: true, message: '请输入密码' }]
 })
 
 onMounted(() => {
-  let userName = userStore.loginConfig.username
-  if (userName) {
-    userInfo.username = userName
+  let account = userStore.loginConfig.account
+  if (account) {
+    userInfo.account = account
     userInfo.password = userStore.loginConfig.password
     remenberPassword.value = true
   }
 })
-const handlerLogin = () => {
+const handlerLogin = async () => {
+  const valid = await loginRef.value.validate();
+  if (valid) { return false }
+  try {
+    loading.value = true
+    await userStore.userLogin(userInfo)
+    await userStore.userInfo()
+  } catch (error) {
+    Message.error((error as Error).message)
+  } finally {
+    loading.value = false
+  }
+
+
   if (remenberPassword.value) {
-    userStore.updateConfigLogin({ loginConfig: { username: userInfo.username, password: userInfo.password } })
+    userStore.updateConfigLogin({ loginConfig: { account: userInfo.account, password: userInfo.password } })
   } else {
     userStore.clearConfigLogin()
   }

@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-21 19:15:28
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-05-29 17:44:15
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
  */
@@ -25,7 +25,14 @@ export default defineConfig({
   },
   server: {
     open: true,
-    host:true
+    host:true,
+    proxy:{
+      '/proxy_prefix':{
+        target:'https://biz-api-test.jw2008.cn/',
+        changeOrigin:true,
+        rewrite:(path)=>path.replace('/proxy_prefix','')
+      }
+    }
   },
   css: {
     preprocessorOptions: {

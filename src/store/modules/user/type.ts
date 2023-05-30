@@ -1,3 +1,4 @@
 export interface UserStateType {
-  loginConfig:{username:string,password:string}
+  loginConfig:{account:string,password:string},
+  menuListVOS:Array<any>
 }

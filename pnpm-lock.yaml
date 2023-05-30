@@ -12,6 +12,7 @@ specifiers:
   husky: ^8.0.3
   init: 0.1.2
   js-base64: ^3.7.5
+  jsencrypt: ^3.3.2
   mock: ^0.1.1
   mockjs: ^1.1.0
   nprogress: ^0.2.0
@@ -32,6 +33,7 @@ dependencies:
   husky: 8.0.3
   init: 0.1.2
   js-base64: 3.7.5
+  jsencrypt: 3.3.2
   mock: 0.1.1
   mockjs: 1.1.0
   nprogress: 0.2.0
@@ -1590,6 +1592,10 @@ packages:
       argparse: 2.0.1
     dev: false
     optional: true
+
+  /jsencrypt/3.3.2:
+    resolution: {integrity: sha512-arQR1R1ESGdAxY7ZheWr12wCaF2yF47v5qpB76TtV64H1pyGudk9Hvw8Y9tb/FiTIaaTRUyaSnm5T/Y53Ghm/A==}
+    dev: false
 
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}

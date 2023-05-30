@@ -1,14 +1,14 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-21 18:54:29
- * @LastEditTime: 2023-05-23 21:49:17
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-05-30 17:32:59
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/api/interceptor.ts
  */
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosResponse, AxiosInstance, AxiosError } from 'axios';
-import { HttpResponse } from '@/types/global'
+import {getToken} from '@/utils/auth'
 import { ElMessage } from 'element-plus'
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -18,7 +18,7 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
   if (!config.headers) {
     config.headers = {}
   }
-  config.headers.Authorization = 'asdf'
+  config.headers.Authorization =  `${getToken()}`
   return config
 
 }, (error: AxiosError) => {
