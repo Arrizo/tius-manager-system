@@ -2,8 +2,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 17:52:05
- * @LastEditTime: 2023-05-31 15:55:00
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-05-31 23:12:52
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/router/index.ts
  */
@@ -22,10 +22,6 @@ const router = createRouter({
         path: '/home',
         name: 'Home',
         component: () => import('@/view/home/index.vue')
-      },{
-        path:'/setting/:id/:name',
-        name:'Setting',
-        component:()=>import('@/view/setting/index.vue')
       }
     ]
   },{

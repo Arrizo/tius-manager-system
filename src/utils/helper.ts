@@ -1,9 +1,9 @@
 /*
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-30 17:07:36
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-05-31 18:24:10
- * @FilePath: \tius-manager-system\src\utils\helper.ts
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-05-31 23:42:19
+ * @FilePath: /tius-manager-system/src/utils/helper.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEll
  */
 import JsEncrypt from 'jsencrypt'
@@ -40,11 +40,10 @@ export const setMenuInfo = (menuList: any[], is_level_one: boolean = false) => {
     if (hasChildren) {
       menuRow.children = setMenuInfo(currentMenu.children, currentMenu.type == "MENU")
     }
-    if (menuRow.name) {
+    if (menuRow.name && JSON.stringify(menuRow.children[0]) != '{}') {
       router.addRoute(menuRow)
     }
     newArray.push(menuRow)
   }
-
   return newArray
 }
