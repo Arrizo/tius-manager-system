@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-25 00:01:52
- * @LastEditTime: 2023-05-30 17:33:38
+ * @LastEditTime: 2023-05-31 18:20:33
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description:
  * @FilePath: /tius-manager-system/src/view/login/index.vue
@@ -36,13 +36,13 @@ import { LoginForm } from '@/types/user'
 import { ref, reactive, onMounted } from 'vue'
 import { useUserStore } from '@/store'
 import { Message } from '@arco-design/web-vue';
-
-
+import { useRoute, useRouter } from 'vue-router';
 const loginRef = ref()
 const userInfo = reactive<LoginForm>(new LoginForm())
 const remenberPassword = ref<boolean>(false)
 const loading = ref(false)
 const userStore = useUserStore()
+const router=useRouter()
 const rulesForm = reactive({
   account: [{ required: true, message: '请输入账号' }],
   password: [{ required: true, message: '请输入密码' }]
@@ -63,15 +63,19 @@ const handlerLogin = async () => {
     loading.value = true
     await userStore.userLogin(userInfo)
     await userStore.userInfo()
+    await userStore.asyncSetRouter()
+    router.push({
+      path:'/home',
+      query:{
+      }
+    })
   } catch (error) {
     Message.error((error as Error).message)
   } finally {
     loading.value = false
   }
-
-
   if (remenberPassword.value) {
-    userStore.updateConfigLogin({ loginConfig: { account: userInfo.account, password: userInfo.password } })
+    userStore.updateConfigLogin({ loginConfig: { account: userInfo.account, password: userInfo.password } } as any)
   } else {
     userStore.clearConfigLogin()
   }

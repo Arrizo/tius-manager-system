@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-25 15:00:05
- * @LastEditors: chenzechao
- * @LastEditTime: 2023-05-28 21:26:37
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-05-31 10:13:24
  * @FilePath: /tius-manager-system/src/layout/default-layout.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,51 +13,15 @@
     </a-layout-header>
     <a-layout>
       <a-layout-sider breakpoint="xl" :collapsible="true" :hide-trigger="true">
-        <a-menu :default-open-keys="['1']" :default-selected-keys="['0_3']" show-collapse-button breakpoint="xl"
-          :style="{ width: '100%' }">
-          <a-menu-item key="0_1" disabled>
-            <IconHome></IconHome>
-            Menu 1
-          </a-menu-item>
-          <a-menu-item key="0_2">
-            <IconCalendar></IconCalendar>
-            Menu 2
-          </a-menu-item>
-          <a-menu-item key="0_3">
-            <IconCalendar></IconCalendar>
-            Menu 3
-          </a-menu-item>
-          <a-sub-menu key="1">
-            <template #title>
-              <IconCalendar></IconCalendar> Navigation 1
-            </template>
-            <a-menu-item key="1_1">Menu 1</a-menu-item>
-            <a-menu-item key="1_2">Menu 2</a-menu-item>
-            <a-sub-menu key="2" title="Navigation 2">
-              <a-menu-item key="2_1">Menu 1</a-menu-item>
-              <a-menu-item key="2_2">Menu 2</a-menu-item>
-            </a-sub-menu>
-            <a-sub-menu key="3" title="Navigation 3">
-              <a-menu-item key="3_1">Menu 1</a-menu-item>
-              <a-menu-item key="3_2">Menu 2</a-menu-item>
-              <a-menu-item key="3_3">Menu 3</a-menu-item>
-            </a-sub-menu>
-          </a-sub-menu>
-          <a-sub-menu key="4">
-            <template #title>
-              <IconCalendar></IconCalendar> Navigation 4
-            </template>
-            <a-menu-item key="4_1">Menu 1</a-menu-item>
-            <a-menu-item key="4_2">Menu 2</a-menu-item>
-            <a-menu-item key="4_3">Menu 3</a-menu-item>
-          </a-sub-menu>
-        </a-menu>
+          <Menu></Menu>
         <template #trigger="{ collapsed }">
           <IconCaretRight v-if="collapsed"></IconCaretRight>
           <IconCaretLeft v-else></IconCaretLeft>
         </template>
       </a-layout-sider>
-      <a-layout-content>Content</a-layout-content>
+      <a-layout-content>
+        <page-layout></page-layout>
+      </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
@@ -65,6 +29,7 @@
 import { useRouter } from 'vue-router'
 import PageLayout from './page-layout.vue'
 import NavBar from '@/components/navbar/index.vue'
+import Menu from '@/components/menu/index.vue'
 import {
   IconCaretRight,
   IconCaretLeft,

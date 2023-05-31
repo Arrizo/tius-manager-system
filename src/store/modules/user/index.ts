@@ -1,3 +1,11 @@
+/*
+ * @Author: chenzechao chenzc@jw99.net
+ * @Date: 2023-05-29 09:22:15
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-05-31 14:45:44
+ * @FilePath: \tius-manager-system\src\store\modules\user\index.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { defineStore } from 'pinia'
 import { encode, decode } from 'js-base64'
 import { UserStateType } from './type'
@@ -5,15 +13,17 @@ import { getRsaPublicKey, login, getInfoMenu } from '@/api/user'
 import { LoginForm } from '@/types/user'
 import { setStorage, getStorage, clearStorage, setToken, clearToken } from '@/utils/auth'
 import { rsaEncrypt } from '@/utils/helper'
+import { setMenuInfo } from '@/utils/helper'
 import { Message } from '@arco-design/web-vue'
 const useUserStore = defineStore('use', {
   state: (): UserStateType => ({
-    menuListVOS:[],
+    menuListVOS: [],
+    nickname: '',
     // 本地存储记住密码信息
-      loginConfig: {
-        account: getStorage('account') ?? '',
-        password: decode(getStorage('password') ?? '')
-      }
+    loginConfig: {
+      account: getStorage('account') ?? '',
+      password: decode(getStorage('password') ?? '')
+    }
   }),
   getters: {
 
@@ -49,27 +59,32 @@ const useUserStore = defineStore('use', {
         if (code != 0) {
           throw new Error(message)
         }
-        if(!value.menuListVOS.length){
+        if (!value.menuListVOS.length) {
           this.logout()
           throw new Error('暂无权限，请联系系统管理员分配权限')
         }
         this.setUserInfo(value)
       } catch (error) {
-          throw error
+        throw error
       }
     },
+    // 设置动态路由
+    async asyncSetRouter() {
+      return new Promise((resolve, reject) => {
+        resolve(setMenuInfo(this.menuListVOS))
+      })
+    },
     // 登出操作
-    logout(){
+    logout() {
       clearToken()
     },
     // 重置所有值
-    resetInfo(){
+    resetInfo() {
       this.$reset()
     },
     // 处理用户信息
-    setUserInfo(data:any){
-      this.$patch({menuListVOS:data.menuListVOS})
-
+    setUserInfo(data: any) {
+      this.$patch({ menuListVOS: data.menuListVOS })
     },
     // 更新记住密码的信息
     updateConfigLogin(data: UserStateType) {
