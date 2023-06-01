@@ -21,15 +21,15 @@ const router = createRouter({
       {
         path: '/home',
         name: 'Home',
-        component: () => import('@/view/home/index.vue')
+        component: () => import('@/views/home/index.vue')
       }
     ]
   },{
     path:'/login',
-    component:()=>import('@/view/login/index.vue')
+    component:()=>import('@/views/login/index.vue')
   },{
     path:'/:pathMatch(.*)*',
-    component:()=>import('@/view/not-found/index.vue')
+    component:()=>import('@/views/not-found/index.vue')
   }],
   scrollBehavior() {
     return {
