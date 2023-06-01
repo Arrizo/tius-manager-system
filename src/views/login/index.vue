@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-25 00:01:52
- * @LastEditTime: 2023-05-31 23:47:47
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-01 17:15:39
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description:
  * @FilePath: /tius-manager-system/src/view/login/index.vue
 -->
@@ -43,6 +43,7 @@ const remenberPassword = ref<boolean>(false)
 const loading = ref(false)
 const userStore = useUserStore()
 const router=useRouter()
+const route = useRoute()
 const rulesForm = reactive({
   account: [{ required: true, message: '请输入账号' }],
   password: [{ required: true, message: '请输入密码' }]

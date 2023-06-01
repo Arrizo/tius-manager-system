@@ -2,12 +2,12 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-31 09:50:18
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-01 15:48:42
+ * @LastEditTime: 2023-06-01 18:40:04
  * @FilePath: \tius-manager-system\src\components\menu\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <a-menu show-collapse-button breakpoint="xl">
+  <a-menu show-collapse-button breakpoint="xl" @collapse="menuCollapse" class="sider-menu" :selected-keys="['oms_system_role','oms_system_user']" auto-open>
     <div v-for="(levelOne, index) in routerMenu" :key="`${index}-sub`">
       <a-sub-menu :key="levelOne.perms" v-if="levelOne.type == 'MENU' && levelOne.children.length">
         <template #icon><icon-bug></icon-bug></template>
@@ -25,13 +25,25 @@
 import { useUserStore } from '@/store';
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import useAppStore from '@/store/modules/app'
+const appStore = useAppStore()
 const userStore = useUserStore()
 const routerMenu = computed(() => userStore.menuListVOS)
 const router = useRouter()
+const menuCollapse = (val: boolean) => {
+  appStore.appCommentsEdit({ collapsed: val })
+}
 const menuClick = (item: any) => {
   router.push({
     path:item.url
   })
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep.sider-menu{
+  height: 100%;
+  .arco-menu-collapse-button{
+    bottom: 74px;
+  }
+}
+</style>

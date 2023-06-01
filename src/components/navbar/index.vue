@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-05-28 21:59:56
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-01 17:12:44
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
 -->
@@ -10,12 +10,10 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img src="http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/df…e20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-          width="33" height="33" alt="">
-        <div>tius</div>
+        <img src="http://192.168.20.98:5174/src/assets/images/login/logo.png" height="33" alt="">
       </a-space>
     </div>
-    <div class="left-center">123</div>
+    <div class="center">用户中心</div>
     <ul class="right-side">
       <li v-for="(item,index) in 6" :key="`${index}-riht`">
         <a-tooltip content="搜索">
@@ -43,6 +41,13 @@ import { } from '@arco-design/web-vue'
   .left-side {
     display: flex;
     padding-left: 20px;
+  }
+  .center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: gray;
   }
   .right-side{
     display: flex;

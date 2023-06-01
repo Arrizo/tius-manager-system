@@ -7,5 +7,12 @@
  * @FilePath: /tius-manager-system/src/view/oms/system/user/index.vue
 -->
 <template>
-  user
+<a-form>
+  <a-form-item ></a-form-item>
+  <a-form-item ></a-form-item>
+  <a-form-item ></a-form-item>
+</a-form>
 </template>
+<script lang="ts" setup>
+
+</script>

@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-25 15:00:05
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-05-31 10:13:24
+ * @LastEditTime: 2023-06-01 18:29:43
  * @FilePath: /tius-manager-system/src/layout/default-layout.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,30 +12,28 @@
       <NavBar />
     </a-layout-header>
     <a-layout>
-      <a-layout-sider breakpoint="xl" :collapsible="true" :hide-trigger="true">
-          <Menu></Menu>
-        <template #trigger="{ collapsed }">
-          <IconCaretRight v-if="collapsed"></IconCaretRight>
-          <IconCaretLeft v-else></IconCaretLeft>
-        </template>
+      <a-layout-sider breakpoint="xl" collapsible :hide-trigger="true" :width="siderWidth">
+        <Menu></Menu>
       </a-layout-sider>
-      <a-layout-content>
+      <a-layout-content :style="contentStyle">
         <page-layout></page-layout>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script lang="ts" setup >
-import { useRouter } from 'vue-router'
+import useAppStore from '@/store/modules/app'
 import PageLayout from './page-layout.vue'
 import NavBar from '@/components/navbar/index.vue'
 import Menu from '@/components/menu/index.vue'
-import {
-  IconCaretRight,
-  IconCaretLeft,
-  IconHome,
-  IconCalendar,
-} from '@arco-design/web-vue/es/icon';
+import { computed } from 'vue'
+const appStore = useAppStore()
+// 收缩菜单的宽度
+const siderWidth = computed(() => appStore.collapsed ? 48 : 200)
+// 菜单内容的宽度
+const contentStyle = computed(() => {
+  return { paddingLeft: appStore.collapsed ? '48px' : '200px' }
+})
 </script>
 <style scoped lang="scss">
 $nav-size-height: 60px;
@@ -61,7 +59,6 @@ $nav-size-height: 60px;
     left: 0px;
     height: 100%;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
-    width: 196px !important;
 
     &::after {
       position: absolute;
@@ -80,7 +77,7 @@ $nav-size-height: 60px;
     overflow-y: hidden;
     background: var(--color-fill-2);
     transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
-    padding: 60px 0px 0px 196px;
+    padding-top: 60px;
   }
 
 }
