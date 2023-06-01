@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-25 15:00:05
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-01 18:29:43
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-02 02:40:11
  * @FilePath: /tius-manager-system/src/layout/default-layout.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -16,6 +16,7 @@
         <Menu></Menu>
       </a-layout-sider>
       <a-layout-content :style="contentStyle">
+               <div v-for="(item,index) in navBarList" :key="`${index}-bar`">{{item.menuName}}</div>
         <page-layout></page-layout>
       </a-layout-content>
     </a-layout>
@@ -30,6 +31,7 @@ import { computed } from 'vue'
 const appStore = useAppStore()
 // 收缩菜单的宽度
 const siderWidth = computed(() => appStore.collapsed ? 48 : 200)
+const navBarList=computed(()=> appStore.navBar)
 // 菜单内容的宽度
 const contentStyle = computed(() => {
   return { paddingLeft: appStore.collapsed ? '48px' : '200px' }
