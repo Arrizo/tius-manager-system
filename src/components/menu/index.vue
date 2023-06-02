@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-31 09:50:18
- * @LastEditors: chenzechao
- * @LastEditTime: 2023-06-02 02:25:27
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-02 16:13:41
  * @FilePath: /tius-manager-system/src/components/menu/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -35,10 +35,12 @@ const menuCollapse = (val: boolean) => {
   appStore.appCommentsEdit({ collapsed: val })
 }
 //默认展开的额菜单栏
-const selectedKeys = computed(() => [router.currentRoute.value.name])
+const selectedKeys = computed(() =>{
+  appStore.addNavBar(router.currentRoute.value)
+  return [router.currentRoute.value.name]
+} )
 // 点击菜单栏跳转
 const menuClick = (item: any) => {
-  appStore.addNavBar(item)
   router.push({
     path: item.url
   })

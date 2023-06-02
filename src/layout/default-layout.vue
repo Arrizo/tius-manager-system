@@ -16,7 +16,7 @@
         <Menu></Menu>
       </a-layout-sider>
       <a-layout-content :style="contentStyle">
-               <div v-for="(item,index) in navBarList" :key="`${index}-bar`">{{item.menuName}}</div>
+        <tab-bar></tab-bar>
         <page-layout></page-layout>
       </a-layout-content>
     </a-layout>
@@ -27,6 +27,7 @@ import useAppStore from '@/store/modules/app'
 import PageLayout from './page-layout.vue'
 import NavBar from '@/components/navbar/index.vue'
 import Menu from '@/components/menu/index.vue'
+import TabBar from '@/components/tabBar/index.vue'
 import { computed } from 'vue'
 const appStore = useAppStore()
 // 收缩菜单的宽度
