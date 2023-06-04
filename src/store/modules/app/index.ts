@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-06-02 02:02:48
- * @LastEditTime: 2023-06-02 17:40:18
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-04 21:47:14
+ * @LastEditors: chenzechao
  * @Description:
  * @FilePath: /tius-manager-system/src/store/modules/app/index.ts
  */
@@ -16,32 +16,35 @@ const useAppStore = defineStore('app', {
     navBar: []
   }),
   getters: {
+    // 当前打开的路由
+    currentRouterPath() {
+      return router.currentRoute.value.fullPath
+    },
   },
   actions: {
     // 修改菜单的收起展开状态
     appCommentsEdit(data: AppStore) {
       this.$patch(data)
     },
+
     addNavBar(item: any) {
-      let activeIndex = this.navBar.findIndex(tag => tag.name == item.name)
-      debugger
-      if (activeIndex == -1) {
-        this.navBar?.push(item)
+      let activeIndex = this.navBar.findIndex(tag => tag.url === item.url)
+      if (activeIndex === -1) {
+        this.navBar.push(item)
       }
     },
-    removeTag(item: any, index: number) {
+    removeLeftTag() {
+
+    },
+    removeRightTag() {
+
+    },
+    removeOtherTag() {
+
+    },
+    closeTag(item:any,index:number){
       this.navBar.splice(index, 1)
-      let currentIndex = index
-      if (currentIndex - 1 >= 0) {
-        router.replace({
-          path: this.navBar[index-1].path,
-        })
-      } else {
-        router.replace({
-          path: this.navBar[index + 1].path,
-        })
-      }
-    }
+    },
   }
 })
 export default useAppStore

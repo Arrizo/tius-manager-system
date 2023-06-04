@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-25 15:00:05
  * @LastEditors: chenzechao
- * @LastEditTime: 2023-06-02 02:40:11
+ * @LastEditTime: 2023-06-02 23:15:23
  * @FilePath: /tius-manager-system/src/layout/default-layout.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -12,7 +12,7 @@
       <NavBar />
     </a-layout-header>
     <a-layout>
-      <a-layout-sider breakpoint="xl" collapsible :hide-trigger="true" :width="siderWidth">
+      <a-layout-sider breakpoint="lg" collapsible :hide-trigger="true" :width="siderWidth">
         <Menu></Menu>
       </a-layout-sider>
       <a-layout-content :style="contentStyle">

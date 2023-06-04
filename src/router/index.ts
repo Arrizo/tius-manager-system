@@ -2,8 +2,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 17:52:05
- * @LastEditTime: 2023-06-01 17:20:22
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-03 21:36:08
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/router/index.ts
  */
@@ -27,7 +27,8 @@ const router = createRouter({
         name: 'Home',
         component: () => import('@/views/home/index.vue'),
         meta:{
-          requiresAuth:true
+          requiresAuth:true,
+          locale:'首页'
         }
       }
     ]
