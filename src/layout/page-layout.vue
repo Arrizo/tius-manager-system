@@ -1,3 +1,11 @@
+<!--
+ * @Author: chenzechao chenzc@jw99.net
+ * @Date: 2023-05-25 14:54:21
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-05 15:13:23
+ * @FilePath: \tius-manager-system\src\layout\page-layout.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in" appear>
@@ -16,7 +24,8 @@ const cacheList = computed(() => [])
 </script>
 <style lang="scss" scoped>
 .layout-component {
+  margin: 10px;
+  background-color: #fff;
   height: 100%;
-  width: 100%;
 }
 </style>

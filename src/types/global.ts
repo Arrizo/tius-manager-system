@@ -7,8 +7,8 @@
  * @FilePath: /tius-manager-system/src/types/global.ts
  */
 export interface HttpResponse<T = any> {
-  code: string | number,
-  message: string,
-  success: boolean,
-  data: T
+  code: string | number;
+  message: string;
+  success: boolean;
+  value: T;
 }

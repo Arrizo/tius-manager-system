@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-06-01 17:12:44
+ * @LastEditTime: 2023-06-05 15:11:29
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
@@ -15,20 +15,36 @@
     </div>
     <div class="center">用户中心</div>
     <ul class="right-side">
-      <li v-for="(item,index) in 6" :key="`${index}-riht`">
-        <a-tooltip content="搜索">
-          <a-button class="nav-btn" type="outline" :shape="'circle'">
-            <template #icon>
-              <icon-search />
-            </template>
+      <li v-for="(item, index) in 1" :key="`${index}-riht`">
+        <a-dropdown trigger="click" @select="actionSelect">
+          <a-button class="nav-btn" type="outline">
+            {{useStore.nickname}}
           </a-button>
-        </a-tooltip>
+          <template #content>
+            <a-doption value="logout">退出登录</a-doption>
+          </template>
+        </a-dropdown>
       </li>
     </ul>
   </div>
 </template>
 <script lang="ts" setup>
-import { } from '@arco-design/web-vue'
+import userUseStore from '@/store/modules/user'
+import { Message } from '@arco-design/web-vue';
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const useStore = userUseStore()
+const actionSelect = (val: any) => {
+  useStore.logout()
+  useStore.resetInfo()
+  Message.success('退出成功！')
+  router.push({
+    path: '/login',
+    query: {
+      ...router.currentRoute.value.query
+    }
+  })
+}
 </script>
 <style lang="scss" scoped>
 .navbar {
@@ -42,18 +58,21 @@ import { } from '@arco-design/web-vue'
     display: flex;
     padding-left: 20px;
   }
-  .center{
+
+  .center {
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color: gray;
   }
-  .right-side{
+
+  .right-side {
     display: flex;
     padding-right: 20px;
     list-style: none;
-    li{
+
+    li {
       display: flex;
       padding: 0px 10px;
     }
