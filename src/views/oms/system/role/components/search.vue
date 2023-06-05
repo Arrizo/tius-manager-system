@@ -1,13 +1,10 @@
 <template>
   <a-form layout="inline" :model="form" ref="formRef">
-    <a-form-item field="username" label="用户账号：">
-      <a-input v-model="form.username" placeholder="请输入" allow-clear style="width: 208px;"></a-input>
-    </a-form-item>
-    <a-form-item field="nickname" label="用户姓名：">
-      <a-input v-model="form.nickname" placeholder="请输入" allow-clear style="width: 208px;"></a-input>
+    <a-form-item field="roleName" label="角色名称：">
+      <a-input v-limit-input @keyup.enter="onSearch" v-model.trim="form.roleName" allow-clear placeholder="请输入" />
     </a-form-item>
     <a-form-item field="status" label="状态：">
-      <a-select placeholder="请选择" v-model="form.status" allow-clear style="width: 208px;">
+      <a-select placeholder="请选择" v-model="(form.status as string)" allow-clear style="width:208px;" >
         <a-option value="all">全部</a-option>
         <a-option value="true">已启用</a-option>
         <a-option value="false">已禁用</a-option>
@@ -23,15 +20,15 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref,onMounted } from 'vue'
-import { UserSearchForm } from '@/types/system/user'
-const emits = defineEmits<{ (event: 'on-search', data: UserSearchForm): void }>()
+import { RoleSearchForm } from '@/types/system/role'
+const emits = defineEmits<{ (event: 'on-search', data: RoleSearchForm): void }>()
 const props= defineProps({
   loading:{
     type:Boolean,
     default:false
   }
 })
-const form = reactive<UserSearchForm>(new UserSearchForm())
+const form = reactive<RoleSearchForm>(new RoleSearchForm())
 const formRef = ref()
 const onSearch = () => {
   let newForm = JSON.parse(JSON.stringify(form))
