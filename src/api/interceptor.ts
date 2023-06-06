@@ -1,15 +1,17 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-21 18:54:29
- * @LastEditTime: 2023-05-30 17:32:59
+ * @LastEditTime: 2023-06-06 09:14:13
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/api/interceptor.ts
  */
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosResponse, AxiosInstance, AxiosError } from 'axios';
-import {getToken} from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 import { ElMessage } from 'element-plus'
+import useUserStore from '@/store/modules/user'
+import router from '@/router'
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 })
@@ -18,7 +20,7 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
   if (!config.headers) {
     config.headers = {}
   }
-  config.headers.Authorization =  `${getToken()}`
+  config.headers.Authorization = `${getToken()}`
   return config
 
 }, (error: AxiosError) => {
@@ -38,6 +40,9 @@ service.interceptors.response.use(
     let message = ''
     if ([401].includes(status)) {
       message = '登陆已失效，请重新登陆'
+      const useStore = useUserStore();
+      useStore.logout();
+      router.replace('/login');
     }
     if ([400].includes(status)) {
       message = '请求参数有误'
