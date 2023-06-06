@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-29 09:22:15
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-06 18:20:07
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-06 22:32:02
  * @FilePath: /tius-manager-system/src/store/modules/user/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,7 +12,7 @@ import { UserStateType } from './type'
 import { getRsaPublicKey, login, getInfoMenu } from '@/api/user'
 import { LoginForm } from '@/types/user'
 import { setStorage, getStorage, clearStorage, setToken, clearToken } from '@/utils/auth'
-import { rsaEncrypt } from '@/utils/helper'
+import { rsaEncrypt, randomKey } from '@/utils/helper'
 import { Message } from '@arco-design/web-vue'
 import router from '@/router'
 const DEFAULT_LAYOUT = () => import('@/layout/default-layout.vue')
@@ -24,7 +24,9 @@ const useUserStore = defineStore('use', {
     loginConfig: {
       account: getStorage('account') ?? '',
       password: decode(getStorage('password') ?? '')
-    }
+    },
+    aesIv:'',
+    aesKey:''
   }),
   getters: {
     
@@ -65,6 +67,10 @@ const useUserStore = defineStore('use', {
           throw new Error('暂无权限，请联系系统管理员分配权限')
         }
         this.setUserInfo(value)
+        this.$patch({
+          aesIv: randomKey(),
+          aesKey: randomKey()
+        })
       } catch (error) {
         throw error
       }
