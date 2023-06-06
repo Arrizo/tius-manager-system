@@ -6,9 +6,16 @@
  * @Description: 
  * @FilePath: /tius-manager-system/src/types/global.ts
  */
+// 请求返回类型
 export interface HttpResponse<T = any> {
   code: string | number;
   message: string;
   success: boolean;
   value: T;
+}
+
+// 加密类型
+export interface CryptoType {
+  encrypt: Function,
+  decrypt: Function
 }

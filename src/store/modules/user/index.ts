@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-29 09:22:15
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-01 16:58:47
+ * @LastEditTime: 2023-06-06 18:20:07
  * @FilePath: /tius-manager-system/src/store/modules/user/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -27,7 +27,7 @@ const useUserStore = defineStore('use', {
     }
   }),
   getters: {
-
+    
   },
   actions: {
     // 登录
