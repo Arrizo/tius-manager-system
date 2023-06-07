@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-30 17:07:36
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-07 09:15:32
+ * @LastEditTime: 2023-06-07 17:29:59
  * @FilePath: /tius-manager-system/src/utils/helper.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEll
  */
@@ -17,6 +17,15 @@ export const rsaEncrypt = (data: any, key: string) => {
     let rsa = new JsEncrypt()
     rsa.setPublicKey(key)
     return rsa.encrypt(data)
+  } catch (error) {
+    return ''
+  }
+}
+export const rsaDecrypt = (data: any, key: string) => {
+  try {
+    let rsa = new JsEncrypt()
+    rsa.setPrivateKey(key)
+    return rsa.decrypt(data)
   } catch (error) {
     return ''
   }
@@ -37,15 +46,14 @@ export const randomKey = (len: number = 16) => {
 export class Crypto implements CryptoType {
   key: string = '' //十六位十六进制的秘钥
   iv: string = ''//十六位十六进制的偏移量
-  constructor() {
+  constructor(key?:string) {
     const userStore = useUserStore()
-    this.key = CryptoJs.enc.Utf8.parse(userStore.aesKey)
+    this.key = CryptoJs.enc.Utf8.parse(key??userStore.aesKey)
     this.iv = CryptoJs.enc.Utf8.parse(userStore.aesIv)
   }
   //  加密
   encrypt(word: any) {
-    let encryptText = ''
-    encryptText = typeof word == 'object' ? JSON.stringify(word) : word
+  let encryptText = typeof word == 'object' ? JSON.stringify(word) : word
     const scrs = CryptoJs.enc.Utf8.parse(encryptText)
     const encrypted = CryptoJs.AES.encrypt(
       scrs,
