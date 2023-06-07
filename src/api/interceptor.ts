@@ -21,6 +21,7 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
     config.headers = {}
   }
   config.headers.Authorization = `${getToken()}`
+  config.headers.aesKey = `${useUserStore().aesKey}`
   return config
 
 }, (error: AxiosError) => {

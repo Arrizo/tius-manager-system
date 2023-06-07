@@ -11,14 +11,16 @@ export default [
   {
     url: '/mock/api/getInfo',
     method: 'post',
-    response: (data:any,vakue:any) => {
+    response: (data: any, vakue: any) => {
+      if (data.headers.aesKey) {
 
-      console.log(data,vakue)
+      }
       return {
         code: 0,
         msg: '成功',
         data: {
-          token: 322
+          token: data,
+          vakue: vakue
         }
       }
     }
