@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-31 23:45:57
- * @LastEditTime: 2023-06-06 22:33:15
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-07 09:17:28
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/views/oms/system/user/index.vue
 -->
@@ -10,8 +10,6 @@
   <panel>
     <template #search>
       <search @on-search="initData" :loading="loading"></search>
-      {{ crypto.encrypt('王子露1') }}
-      {{crypto.decrypt(crypto.encrypt('王子露1'))}}
     </template>
     <template #table>
       <list :data-list="dataList" :total="total" @on-search="initData" :page-number="form.pageNum"
