@@ -1,17 +1,19 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-20 19:59:39
- * @LastEditTime: 2023-05-23 22:22:09
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-07 11:55:26
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/mock/user.ts
  */
 import { MockMethod } from 'vite-plugin-mock'
 export default [
   {
-    url: '/api/getInfo',
+    url: '/mock/api/getInfo',
     method: 'post',
-    response: () => {
+    response: (data:any,vakue:any) => {
+
+      console.log(data,vakue)
       return {
         code: 0,
         msg: '成功',

@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-05-29 17:44:15
+ * @LastEditTime: 2023-06-07 12:12:19
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
@@ -27,11 +27,17 @@ export default defineConfig({
     open: true,
     host:true,
     proxy:{
-      '/proxy_prefix':{
+      '/auth-core':{
         target:'https://biz-api-test.jw2008.cn/',
         changeOrigin:true,
-        rewrite:(path)=>path.replace('/proxy_prefix','')
-      }
+        // rewrite:(path)=>path.replace('/proxy_prefix','')
+      },
+      '/mock':{
+        target:'http://localhost:5174/',
+        changeOrigin:true,
+        // rewrite:(path)=>path.replace('','')
+      },
+
     }
   },
   css: {

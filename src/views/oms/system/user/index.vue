@@ -22,7 +22,7 @@ import Search from './components/search.vue'
 import List from './components/list.vue'
 import Panel from '@/components/panel/index.vue'
 import { UserSearchForm, UserSearchListItem } from '@/types/system/user'
-import { getList } from '@/api/system/user'
+import { getList,sdsdfaf } from '@/api/system/user'
 import { reactive, ref } from 'vue'
 import { Message } from '@arco-design/web-vue'
 import {Crypto} from '@/utils/helper'
@@ -31,6 +31,7 @@ const dataList = ref<Array<UserSearchListItem>>([])
 const total = ref(0)
 const loading = ref(false)
 const initData = async (data: UserSearchForm) => {
+  sdsdfaf()
   try {
     loading.value = true
     Object.assign(form, data)
