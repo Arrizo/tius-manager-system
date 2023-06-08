@@ -12,8 +12,8 @@
     </a-form-item>
     <a-form-item>
       <a-space :size="20">
-        <a-button type="primary" @click="onSearch" :loading="loading">查询</a-button>
-        <a-button @click="onReset">重置</a-button>
+        <a-button type="primary" @click="onSearch" :loading="loading">{{$t('infoConfig.searchText')}}</a-button>
+        <a-button @click="onReset" >{{$t('infoConfig.resetText')}}</a-button>
       </a-space>
     </a-form-item>
   </a-form>

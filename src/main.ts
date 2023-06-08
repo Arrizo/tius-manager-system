@@ -14,9 +14,11 @@ import '@/assets/styles/global.scss'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import router from '@/router/index'
 import store from './store'
+import i18n from './i18n'
 const app = createApp(App)
 app.use(ArcoVue)
 app.use(store)
 app.use(ArcoVueIcon)
 app.use(router)
+app.use(i18n)
 app.mount('#app')

@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-06-05 15:11:29
+ * @LastEditTime: 2023-06-08 13:35:03
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
@@ -16,9 +16,10 @@
     <div class="center">用户中心</div>
     <ul class="right-side">
       <li v-for="(item, index) in 1" :key="`${index}-riht`">
+        <a-button class="nav-btn" style="margin-right: 10px;" @click="changeLanguage">切换语言</a-button>
         <a-dropdown trigger="click" @select="actionSelect">
           <a-button class="nav-btn" type="outline">
-            {{useStore.nickname}}
+            {{ useStore.nickname }}
           </a-button>
           <template #content>
             <a-doption value="logout">退出登录</a-doption>
@@ -32,6 +33,9 @@
 import userUseStore from '@/store/modules/user'
 import { Message } from '@arco-design/web-vue';
 import { useRouter } from 'vue-router'
+import { setStorage, getStorage } from '@/utils/auth'
+import { useI18n } from 'vue-i18n'
+const { locale,t } = useI18n()
 const router = useRouter()
 const useStore = userUseStore()
 const actionSelect = (val: any) => {
@@ -44,6 +48,13 @@ const actionSelect = (val: any) => {
       ...router.currentRoute.value.query
     }
   })
+}
+const changeLanguage = () => {
+
+  let lang = getStorage('language')
+  locale.value = lang == 'en' ? 'zh' : 'en'
+  setStorage('language', locale.value)
+  // Message.success(t('login.username'))
 }
 </script>
 <style lang="scss" scoped>
