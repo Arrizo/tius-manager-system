@@ -13,9 +13,9 @@
         <a-option value="false">已禁用</a-option>
       </a-select>
     </a-form-item>
-    <a-form-item>
+    <a-form-item hide-label>
       <a-space :size="20">
-        <a-button type="primary" @click="onSearch" :loading="loading">查询</a-button>
+        <a-button type="primary" @click="onSearch" :loading="loading" >查询</a-button>
         <a-button @click="onReset">重置</a-button>
       </a-space>
     </a-form-item>

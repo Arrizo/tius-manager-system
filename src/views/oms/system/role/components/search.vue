@@ -10,7 +10,7 @@
         <a-option value="false">已禁用</a-option>
       </a-select>
     </a-form-item>
-    <a-form-item>
+    <a-form-item hide-label>
       <a-space :size="20">
         <a-button type="primary" @click="onSearch" :loading="loading">{{$t('infoConfig.searchText')}}</a-button>
         <a-button @click="onReset" >{{$t('infoConfig.resetText')}}</a-button>
