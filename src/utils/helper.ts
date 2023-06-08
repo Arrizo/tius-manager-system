@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-30 17:07:36
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-07 17:29:59
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-07 22:40:20
  * @FilePath: /tius-manager-system/src/utils/helper.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEll
  */
@@ -46,14 +46,14 @@ export const randomKey = (len: number = 16) => {
 export class Crypto implements CryptoType {
   key: string = '' //十六位十六进制的秘钥
   iv: string = ''//十六位十六进制的偏移量
-  constructor(key?:string) {
+  constructor(key?: string) {
     const userStore = useUserStore()
-    this.key = CryptoJs.enc.Utf8.parse(key??userStore.aesKey)
+    this.key = CryptoJs.enc.Utf8.parse(key ?? userStore.aesKey)
     this.iv = CryptoJs.enc.Utf8.parse(userStore.aesIv)
   }
   //  加密
   encrypt(word: any) {
-  let encryptText = typeof word == 'object' ? JSON.stringify(word) : word
+    let encryptText = typeof word == 'object' ? JSON.stringify(word) : word
     const scrs = CryptoJs.enc.Utf8.parse(encryptText)
     const encrypted = CryptoJs.AES.encrypt(
       scrs,
@@ -66,7 +66,7 @@ export class Crypto implements CryptoType {
     )
     return encrypted.ciphertext.toString().toUpperCase();
   }
- 
+
   decrypt(word: any) {
     const encryptedHexStr = CryptoJs.enc.Hex.parse(word)
     const scrs = CryptoJs.enc.Base64.stringify(encryptedHexStr)

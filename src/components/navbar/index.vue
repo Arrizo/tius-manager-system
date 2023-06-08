@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-06-08 13:35:03
+ * @LastEditTime: 2023-06-08 13:50:49
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
@@ -23,7 +23,10 @@
           </a-button>
           <template #content>
             <a-doption value="logout">退出登录</a-doption>
+            <a-doption value="theme">切换主题</a-doption>
+            <a-doption value="auto">切换自定义</a-doption>
           </template>
+
         </a-dropdown>
       </li>
     </ul>
@@ -36,18 +39,40 @@ import { useRouter } from 'vue-router'
 import { setStorage, getStorage } from '@/utils/auth'
 import { useI18n } from 'vue-i18n'
 const { locale,t } = useI18n()
+import { ref } from 'vue'
 const router = useRouter()
 const useStore = userUseStore()
+const flag = ref(true)
 const actionSelect = (val: any) => {
-  useStore.logout()
-  useStore.resetInfo()
-  Message.success('退出成功！')
-  router.push({
-    path: '/login',
-    query: {
-      ...router.currentRoute.value.query
-    }
-  })
+
+  switch (val) {
+    case 'theme':
+      if (flag.value) {
+        document.body.setAttribute('theme-mode', 'dark');
+        flag.value = false
+      } else {
+        flag.value = true
+        document.body.removeAttribute('theme-mode')
+      }
+      return
+    case 'logout':
+      useStore.logout()
+      useStore.resetInfo()
+      Message.success('退出成功！')
+      router.push({
+        path: '/login',
+        query: {
+          ...router.currentRoute.value.query
+        }
+      })
+      return
+      case 'auto':
+      document.body.style.setProperty('--g-background-cord','blue')
+    default:
+      break;
+  }
+
+
 }
 const changeLanguage = () => {
 
@@ -75,7 +100,7 @@ const changeLanguage = () => {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: gray;
+    color: var(--g-text-color)
   }
 
   .right-side {

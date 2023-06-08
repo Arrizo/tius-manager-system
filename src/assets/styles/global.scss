@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+
+:root {
+  --g-background-cord: #fff;
+  --g-text-color: #f53f3f
+}
 html,
 body {
   width: 100%;
@@ -12,6 +17,13 @@ body {
   background-color: var(--color-bg-1);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  transition: color 1s, background-color 1s;
+}
+
+
+:root body[theme-mode="dark"] {
+  --g-background-cord: #000;
+  --g-text-color: yellow
 }
 
 .echarts-tooltip-diy {
