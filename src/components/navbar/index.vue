@@ -16,9 +16,10 @@
     <div class="center">用户中心</div>
     <ul class="right-side">
       <li v-for="(item, index) in 1" :key="`${index}-riht`">
-        <a-button class="nav-btn" style="margin-right: 10px;" @click="changeLanguage">切换语言</a-button>
+        <a-button class="nav-btn" style="margin-right: 10px;" @click="changeLanguage"> <i class="iconfont icon-password"></i>切换语言</a-button>
         <a-dropdown trigger="click" @select="actionSelect">
           <a-button class="nav-btn" type="outline">
+            <i class="iconfont icon-person"></i>
             {{ useStore.nickname }}
           </a-button>
           <template #content>

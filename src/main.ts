@@ -11,7 +11,10 @@ import ArcoVue from '@arco-design/web-vue'
 import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
 import '@/assets/styles/global.scss'
+import '@/assets/iconfont/iconfont.css'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
+import SvgIcon from '@/components/svg-icon/index.vue'
+import '@/assets/iconfont/iconfont.js'
 import router from '@/router/index'
 import store from './store'
 import i18n from './i18n'
@@ -21,4 +24,5 @@ app.use(store)
 app.use(ArcoVueIcon)
 app.use(router)
 app.use(i18n)
+app.component('SvgIcon',SvgIcon)
 app.mount('#app')

@@ -1,0 +1,37 @@
+{
+  "id": "4111363",
+  "name": "tius-system",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "715381",
+      "name": "person",
+      "font_class": "person",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "1503406",
+      "name": "price",
+      "font_class": "price",
+      "unicode": "e6fc",
+      "unicode_decimal": 59132
+    },
+    {
+      "icon_id": "18072110",
+      "name": "password",
+      "font_class": "password",
+      "unicode": "e7ed",
+      "unicode_decimal": 59373
+    },
+    {
+      "icon_id": "10793041",
+      "name": "system",
+      "font_class": "system",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    }
+  ]
+}
