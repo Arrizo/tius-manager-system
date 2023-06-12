@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-29 09:22:15
  * @LastEditors: chenzechao
- * @LastEditTime: 2023-06-06 22:32:02
+ * @LastEditTime: 2023-06-13 00:00:51
  * @FilePath: /tius-manager-system/src/store/modules/user/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -26,7 +26,8 @@ const useUserStore = defineStore('use', {
       password: decode(getStorage('password') ?? '')
     },
     aesIv:'',
-    aesKey:''
+    aesKey:'',
+    permissionList:[]
   }),
   getters: {
     
@@ -79,6 +80,7 @@ const useUserStore = defineStore('use', {
     async asyncSetRouter() {
       return new Promise((resolve) => {
         let modules = import.meta.glob('../../../views/**/*.vue');
+        let sefl=this
         function setMenuInfo(arr: any[], is_level_one: boolean = false) {
           let newArr = [];
           for (let i = 0; i < arr.length; i++) {
@@ -99,6 +101,9 @@ const useUserStore = defineStore('use', {
                   requiresAuth: true,
                 },
               };
+            }
+            if (arr[i].type =='BUTTON'){
+              sefl.permissionList.push(arr[i].perms)
             }
 
             if (hasChildren) {
@@ -123,6 +128,7 @@ const useUserStore = defineStore('use', {
     // 登出操作
     logout() {
       clearToken()
+      this.resetInfo()
     },
     // 重置所有值
     resetInfo() {

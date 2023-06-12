@@ -3,7 +3,6 @@
     <a-form-item field="roleName" label="角色名称：">
       <a-input v-limit-input @keyup.enter="onSearch" v-model.trim="form.roleName" allow-clear placeholder="请输入" />
     </a-form-item>
-    <svg-icon iconName="icon-caisefuzhou" className="sdfa" color="yellow"></svg-icon>
     <a-form-item field="status" label="状态：">
       <a-select placeholder="请选择" v-model="(form.status as string)" allow-clear style="width:208px;" >
         <a-option value="all">全部</a-option>

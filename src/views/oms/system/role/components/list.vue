@@ -1,12 +1,21 @@
 <!--
+ * @Author: chenzechao
+ * @Date: 2023-06-12 23:20:13
+ * @LastEditTime: 2023-06-13 00:17:06
+ * @LastEditors: chenzechao
+ * @Description: 
+ * @FilePath: /tius-manager-system/src/views/oms/system/role/components/list.vue
+-->
+<!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-06-05 20:27:46
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-08 13:39:32
- * @FilePath: \tius-manager-system\src\views\oms\system\role\components\list.vue
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-13 00:16:24
+ * @FilePath: /tius-manager-system/src/views/oms/system/role/components/list.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
+  <a-button v-permission="['oms:orderManagement:recordOrder:add']">新增</a-button>
   <a-table :data="dataList" :pagination="paginationOption" @page-change="changePage" @page-size-change="changeSize" :scroll="{x:1000,y:'550px'}">
     <template #columns>
         <a-table-column title="角色名称" ellipsis tooltip :width="120">
