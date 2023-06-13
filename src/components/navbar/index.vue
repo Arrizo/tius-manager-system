@@ -10,78 +10,112 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img src="http://192.168.20.98:5174/src/assets/images/login/logo.png" height="33" alt="">
+        <svg-icon iconName="icon-083yier" className="logo"></svg-icon>
+        Tius
       </a-space>
     </div>
-    <div class="center">用户中心</div>
+    <!-- <div class="center">用户中心</div> -->
     <ul class="right-side">
-      <li v-for="(item, index) in 1" :key="`${index}-riht`">
-        <a-button class="nav-btn" style="margin-right: 10px;" @click="changeLanguage"> <i class="iconfont icon-password"></i>切换语言</a-button>
+      <li>
+        <a-tooltip content="语言">
+          <a-dropdown trigger="click" @select="actionSelect">
+            <a-button shape="circle">
+              <template #icon>
+                <i class="iconfont icon-zhongyingwen"></i>
+              </template>
+            </a-button>
+            <template #content>
+              <a-doption value="zh">中文</a-doption>
+              <a-doption value="en">English</a-doption>
+            </template>
+          </a-dropdown>
+        </a-tooltip>
+      </li>
+      <li>
+        <a-tooltip content="语言">
+          <a-button shape="circle">
+            <template #icon>
+              <i class="iconfont icon-baitianmoshimingliangmoshi"></i>
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+      <li>
+        <a-tooltip content="语言">
+          <a-button shape="circle">
+            <template #icon>
+              <i class="iconfont icon-baitianmoshimingliangmoshi"></i>
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+
+      <li>
         <a-dropdown trigger="click" @select="actionSelect">
-          <a-button class="nav-btn" type="outline">
-            <i class="iconfont icon-person"></i>
-            {{ useStore.nickname }}
+          <a-button class="nav-btn" shape="circle">
+            <i class="iconfont icon-gerenzhongxin"></i>
           </a-button>
           <template #content>
+            <a-doption value="logout">个人中心</a-doption>
             <a-doption value="logout">退出登录</a-doption>
-            <a-doption value="theme">切换主题</a-doption>
-            <a-doption value="auto">切换自定义</a-doption>
+            <!-- <a-doption value="theme">切换主题</a-doption>
+            <a-doption value="auto">切换自定义</a-doption> -->
           </template>
-
         </a-dropdown>
       </li>
     </ul>
   </div>
 </template>
 <script lang="ts" setup>
-import userUseStore from '@/store/modules/user'
-import { Message } from '@arco-design/web-vue';
-import { useRouter } from 'vue-router'
-import { setStorage, getStorage } from '@/utils/auth'
-import { useI18n } from 'vue-i18n'
-const { locale,t } = useI18n()
-import { ref } from 'vue'
-const router = useRouter()
-const useStore = userUseStore()
-const flag = ref(true)
+import userUseStore from "@/store/modules/user";
+import { Message } from "@arco-design/web-vue";
+import { useRouter } from "vue-router";
+import { setStorage, getStorage } from "@/utils/auth";
+import { useI18n } from "vue-i18n";
+const { locale, t } = useI18n();
+import { ref } from "vue";
+const router = useRouter();
+const useStore = userUseStore();
+const flag = ref(true);
 const actionSelect = (val: any) => {
-
   switch (val) {
-    case 'theme':
+    case 'zh':
+      
+    case 'en':
+
+
+    case "theme":
       if (flag.value) {
-        document.body.setAttribute('theme-mode', 'dark');
-        flag.value = false
+        document.body.setAttribute("theme-mode", "dark");
+        flag.value = false;
       } else {
-        flag.value = true
-        document.body.removeAttribute('theme-mode')
+        flag.value = true;
+        document.body.removeAttribute("theme-mode");
       }
-      return
-    case 'logout':
-      useStore.logout()
-      useStore.resetInfo()
-      Message.success('退出成功！')
+      return;
+    case "logout":
+      useStore.logout();
+      useStore.resetInfo();
+      Message.success("退出成功！");
       router.push({
-        path: '/login',
+        path: "/login",
         query: {
-          ...router.currentRoute.value.query
-        }
-      })
-      return
-      case 'auto':
-      document.body.style.setProperty('--g-background-cord','blue')
+          ...router.currentRoute.value.query,
+        },
+      });
+      return;
+    case "auto":
+      document.body.style.setProperty("--g-background-cord", "blue");
     default:
       break;
   }
-
-
-}
+};
 const changeLanguage = () => {
-
-  let lang = getStorage('language')
-  locale.value = lang == 'en' ? 'zh' : 'en'
-  setStorage('language', locale.value)
+  let lang = getStorage("language");
+  locale.value = lang == "en" ? "zh" : "en";
+  setStorage("language", locale.value);
   // Message.success(t('login.username'))
-}
+};
 </script>
 <style lang="scss" scoped>
 .navbar {
@@ -93,7 +127,13 @@ const changeLanguage = () => {
 
   .left-side {
     display: flex;
-    padding-left: 20px;
+    padding-left: 30px;
+    color: #6b6b6b;
+    font-size: 20px;
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   .center {
@@ -101,7 +141,7 @@ const changeLanguage = () => {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: var(--g-text-color)
+    color: var(--g-text-color);
   }
 
   .right-side {

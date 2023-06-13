@@ -1,11 +1,4 @@
-<!--
- * @Author: chenzechao
- * @Date: 2023-06-12 23:20:13
- * @LastEditTime: 2023-06-13 00:17:06
- * @LastEditors: chenzechao
- * @Description: 
- * @FilePath: /tius-manager-system/src/views/oms/system/role/components/list.vue
--->
+
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-06-05 20:27:46
@@ -80,12 +73,12 @@ const props = defineProps({
 })
 const paginationOption = computed(() => {
   return {
-    total: props.total,
     showJumper: true,
     showTotal: true,
     showPageSize: true,
     pageSizeOptions: [10, 50, 100],
     baseSize: 3,
+    total: props.total,
     pageSize: props.pageSize,
     current: props.pageNumber
   }

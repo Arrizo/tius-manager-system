@@ -9,7 +9,9 @@
 import { defineStore } from 'pinia'
 import { AppStore } from './type'
 import router from '@/router';
-
+import { setStorage } from "@/utils/auth";
+import i18n from '@/i18n';
+import { Message } from '@arco-design/web-vue';
 const useAppStore = defineStore('app', {
   state: (): AppStore => ({
     collapsed: false,
@@ -22,6 +24,12 @@ const useAppStore = defineStore('app', {
     },
   },
   actions: {
+    // 切换中英文
+    changeLanguage(lg: 'zh' | 'en') {
+      setStorage("language", lg);
+      i18n.global.locale.value = lg
+      Message.error('')
+    },
     // 修改菜单的收起展开状态
     appCommentsEdit(data: AppStore) {
       this.$patch(data)
@@ -33,16 +41,7 @@ const useAppStore = defineStore('app', {
         this.navBar.push(item)
       }
     },
-    removeLeftTag() {
-
-    },
-    removeRightTag() {
-
-    },
-    removeOtherTag() {
-
-    },
-    closeTag(item:any,index:number){
+    closeTag(item: any, index: number) {
       this.navBar.splice(index, 1)
     },
   }
