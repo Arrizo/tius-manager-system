@@ -1,4 +1,5 @@
 export interface AppStore{
   collapsed: boolean;
-  navBar:Array<any>
+  navBar:Array<any>,
+  theme:string
 }

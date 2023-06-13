@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-30 17:07:36
  * @LastEditors: chenzechao
- * @LastEditTime: 2023-06-07 22:40:20
+ * @LastEditTime: 2023-06-14 00:30:07
  * @FilePath: /tius-manager-system/src/utils/helper.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEll
  */
@@ -21,6 +21,7 @@ export const rsaEncrypt = (data: any, key: string) => {
     return ''
   }
 }
+
 export const rsaDecrypt = (data: any, key: string) => {
   try {
     let rsa = new JsEncrypt()
@@ -31,6 +32,7 @@ export const rsaDecrypt = (data: any, key: string) => {
   }
 }
 // 随机生成16位数
+
 export const randomKey = (len: number = 16) => {
   let randomkeyArry = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
   let key = ''
@@ -81,5 +83,13 @@ export class Crypto implements CryptoType {
     )
     const decryptedStr = decrypt.toString(CryptoJs.enc.Utf8)
     return decryptedStr.toString()
+  }
+}
+export const toggleFullScreen = (isFull: boolean) => {
+  let element: HTMLElement = document.documentElement
+  if (isFull) {
+    element.requestFullscreen()
+  } else {
+    document.exitFullscreen()
   }
 }

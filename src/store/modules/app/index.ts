@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-06-02 02:02:48
- * @LastEditTime: 2023-06-04 21:47:14
+ * @LastEditTime: 2023-06-13 23:52:00
  * @LastEditors: chenzechao
  * @Description:
  * @FilePath: /tius-manager-system/src/store/modules/app/index.ts
@@ -9,13 +9,14 @@
 import { defineStore } from 'pinia'
 import { AppStore } from './type'
 import router from '@/router';
-import { setStorage } from "@/utils/auth";
+import { setStorage, getStorage } from "@/utils/auth";
 import i18n from '@/i18n';
 import { Message } from '@arco-design/web-vue';
 const useAppStore = defineStore('app', {
   state: (): AppStore => ({
     collapsed: false,
-    navBar: []
+    navBar: [],
+    theme: getStorage('theme') ?? 'light'
   }),
   getters: {
     // 当前打开的路由
@@ -25,10 +26,21 @@ const useAppStore = defineStore('app', {
   },
   actions: {
     // 切换中英文
-    changeLanguage(lg: 'zh' | 'en') {
+    toggleLanguage(lg: 'zh' | 'en') {
       setStorage("language", lg);
       i18n.global.locale.value = lg
-      Message.error('')
+      // messages
+      Message.success(i18n.global.t('infoConfig.languageMessage'))
+    },
+    // 切换主题
+    toggleTheme() {
+      this.theme = this.theme == 'dark' ? 'light' : 'dark'
+      setStorage('theme', this.theme)
+      if (this.theme == 'dark') {
+        document.body.setAttribute('theme-mode', 'dark')
+      } else {
+        document.body.removeAttribute('theme-mode')
+      }
     },
     // 修改菜单的收起展开状态
     appCommentsEdit(data: AppStore) {

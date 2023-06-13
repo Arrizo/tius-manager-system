@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-06-08 13:50:49
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-14 00:31:36
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
 -->
@@ -17,7 +17,7 @@
     <!-- <div class="center">用户中心</div> -->
     <ul class="right-side">
       <li>
-        <a-tooltip content="语言">
+        <a-tooltip :content="$t('setttings.language')">
           <a-dropdown trigger="click" @select="actionSelect">
             <a-button shape="circle">
               <template #icon>
@@ -32,19 +32,19 @@
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip content="语言">
-          <a-button shape="circle">
+        <a-tooltip :content="$t('setttings.theme')">
+          <a-button shape="circle" @click="actionSelect('theme')">
             <template #icon>
-              <i class="iconfont icon-baitianmoshimingliangmoshi"></i>
+              <i class="iconfont" :class="[isDark ? 'icon-dark' : 'icon-baitianmoshimingliangmoshi']"> </i>
             </template>
           </a-button>
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip content="语言">
-          <a-button shape="circle">
+        <a-tooltip :content="fullScreen ? '退出全屏模式' : '切换到全屏模式'">
+          <a-button shape="circle" @click="actionSelect('full')">
             <template #icon>
-              <i class="iconfont icon-baitianmoshimingliangmoshi"></i>
+              <i class="iconfont icon-quanping_o"></i>
             </template>
           </a-button>
         </a-tooltip>
@@ -67,32 +67,31 @@
   </div>
 </template>
 <script lang="ts" setup>
-import userUseStore from "@/store/modules/user";
 import { Message } from "@arco-design/web-vue";
+import { toggleFullScreen } from '@/utils/helper'
 import { useRouter } from "vue-router";
 import { setStorage, getStorage } from "@/utils/auth";
 import { useI18n } from "vue-i18n";
+import { useAppStore, useUserStore } from '@/store'
 const { locale, t } = useI18n();
-import { ref } from "vue";
+import { ref, onMounted, computed } from "vue";
 const router = useRouter();
-const useStore = userUseStore();
-const flag = ref(true);
+const useStore = useUserStore();
+const appStore = useAppStore()
+const fullScreen = ref(false)
+const isDark = computed(() => appStore.theme == 'dark')
 const actionSelect = (val: any) => {
   switch (val) {
     case 'zh':
-      
+      return appStore.toggleLanguage('zh')
     case 'en':
-
-
+      return appStore.toggleLanguage('en')
     case "theme":
-      if (flag.value) {
-        document.body.setAttribute("theme-mode", "dark");
-        flag.value = false;
-      } else {
-        flag.value = true;
-        document.body.removeAttribute("theme-mode");
-      }
-      return;
+      return appStore.toggleTheme()
+    case 'full':
+      fullScreen.value = !fullScreen.value
+      toggleFullScreen(fullScreen.value)
+      return
     case "logout":
       useStore.logout();
       useStore.resetInfo();
@@ -110,12 +109,12 @@ const actionSelect = (val: any) => {
       break;
   }
 };
-const changeLanguage = () => {
-  let lang = getStorage("language");
-  locale.value = lang == "en" ? "zh" : "en";
-  setStorage("language", locale.value);
-  // Message.success(t('login.username'))
-};
+onMounted(() => {
+  let idDark = getStorage('theme')
+  if (idDark) {
+    document.body.setAttribute('theme-mode', idDark)
+  }
+})
 </script>
 <style lang="scss" scoped>
 .navbar {
@@ -130,6 +129,7 @@ const changeLanguage = () => {
     padding-left: 30px;
     color: #6b6b6b;
     font-size: 20px;
+
     .logo {
       width: 50px;
       height: 50px;
