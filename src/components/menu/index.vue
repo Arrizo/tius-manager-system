@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-31 09:50:18
- * @LastEditors: chenzechao
- * @LastEditTime: 2023-06-03 21:35:03
+ * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-06-14 18:18:50
  * @FilePath: /tius-manager-system/src/components/menu/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -58,7 +58,7 @@ onMounted(() => {
   height: 100%;
 
   .arco-menu-collapse-button {
-    bottom: 74px;
+    bottom: 20px;
   }
 }
 </style>

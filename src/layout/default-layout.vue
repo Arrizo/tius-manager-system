@@ -2,7 +2,7 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-25 15:00:05
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-05 15:19:13
+ * @LastEditTime: 2023-06-14 18:19:24
  * @FilePath: /tius-manager-system/src/layout/default-layout.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -60,7 +60,7 @@ $nav-size-height: 60px;
     position: fixed;
     top: 60px;
     left: 0px;
-    height: 100%;
+    height: calc(100% - $nav-size-height);
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
 
     &::after {
