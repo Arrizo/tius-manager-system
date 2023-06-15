@@ -25,7 +25,7 @@ const cacheList = computed(() => [])
 <style lang="scss" scoped>
 .layout-component {
   margin: 10px;
-  background-color: var(--g-background-cord);
+  background-color: var(--background-color-1);
   height: 100%
 }
 </style>

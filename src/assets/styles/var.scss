@@ -1,1 +1,18 @@
-$bg:'red'
+:root{
+  --red-1:rgb(255,236,232);
+  --red-2:rgb(253,205,197);
+  --red-3:rgb(251,172,163);
+  --red-4:rgb(249,137,129);
+  --red-5:rgb(247,101,96);
+  --red-6:rgb(245,63,63);
+--background-color-1:var(--red-1);
+--background-color-2:rgb(235, 235, 235);
+
+}
+:root body[theme-mode="dark"]{
+  --green-1: rgb(232,255,234);
+  --green-2: rgb(175,240,181);
+  --green-3: rgb(123,225,136);
+  --background-color-1:var(--green-1);
+  --background-color-2:rgb(32, 32, 32);
+}
