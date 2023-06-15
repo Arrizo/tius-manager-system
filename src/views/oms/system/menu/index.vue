@@ -11,6 +11,7 @@
   1、拉取分支
   2、修复bug
   3、重新合并到release分支
+  3、修复生产bug
 </div>
 </template>
 <script lang="ts" setup>
