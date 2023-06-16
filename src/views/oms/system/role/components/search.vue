@@ -45,10 +45,3 @@ onMounted(()=>{
   onSearch()
 })
 </script>
-<style lang="scss" scoped>
-.sdfa{
-  width: 100px;
-  height: 100px;
-  // background: red;
-}
-</style>

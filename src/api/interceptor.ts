@@ -12,6 +12,7 @@ import { getToken } from '@/utils/auth'
 import { ElMessage } from 'element-plus'
 import useUserStore from '@/store/modules/user'
 import router from '@/router'
+import { Message } from "@arco-design/web-vue";
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 })
@@ -25,7 +26,7 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
   return config
 
 }, (error: AxiosError) => {
-  ElMessage.error(error.message)
+  Message.error(error.message)
   return Promise.reject(error)
 })
 /** Response 响应处理 */
@@ -54,8 +55,7 @@ service.interceptors.response.use(
     if ([501, 503].includes(status)) {
       message = '网络繁忙，请稍后再试'
     }
-    ElMessage.error(message)
-    return Promise.reject(error)
+    return Promise.reject(message)
   }
 )
 export default service

@@ -89,7 +89,7 @@ const handlerLogin = async () => {
       query: {},
     });
   } catch (error) {
-    Message.error((error as Error).message);
+    Message.error(error as string);
   } finally {
     loading.value = false;
   }
