@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-31 23:45:57
- * @LastEditTime: 2023-06-05 20:35:03
+ * @LastEditTime: 2023-06-16 16:04:11
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/view/oms/system/user/index.vue
@@ -21,12 +21,12 @@
 import Search from './components/search.vue'
 import List from './components/list.vue'
 import Panel from '@/components/panel/index.vue'
-import { RoleSearchForm, RoleSearchRes } from '@/types/system/role'
+import { RoleSearchForm,RoleSearchResResultItem } from '@/types/system/role'
 import { getList } from '@/api/system/role'
 import { reactive, ref } from 'vue'
 import { Message } from '@arco-design/web-vue'
 let form = reactive<RoleSearchForm>(new RoleSearchForm())
-const dataList = ref<Array<RoleSearchRes>>([])
+const dataList = ref<Array<RoleSearchResResultItem>>([])
 const total = ref(0)
 const loading = ref(false)
 const initData = async (data: RoleSearchForm) => {

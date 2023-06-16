@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-31 23:45:57
- * @LastEditTime: 2023-06-07 17:40:02
+ * @LastEditTime: 2023-06-16 16:12:39
  * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/views/oms/system/user/index.vue
@@ -25,7 +25,6 @@ import { UserSearchForm, UserSearchListItem } from '@/types/system/user'
 import { getList } from '@/api/system/user'
 import { reactive, ref } from 'vue'
 import { Message } from '@arco-design/web-vue'
-import { useTestStore,useUserStore } from '@/store'
 let form = reactive<UserSearchForm>(new UserSearchForm())
 const dataList = ref<Array<UserSearchListItem>>([])
 const total = ref(0)
