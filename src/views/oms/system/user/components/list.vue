@@ -1,5 +1,5 @@
 <template>
-  <a-table :data="dataList" :pagination="paginationOption" @page-change="changePage" @page-size-change="changeSize">
+  <a-table :data="dataList" :pagination="paginationOption" @page-change="changePage" @page-size-change="changeSize" :scroll="{x:1000,y:'100%'}">
     <template #columns>
       <a-table-column title="用户账号">
         <template #cell="{ record }">

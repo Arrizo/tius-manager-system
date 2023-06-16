@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4111363 */
-  src: url('//at.alicdn.com/t/c/font_4111363_hmpyexvxd3o.woff2?t=1686659707874') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4111363_hmpyexvxd3o.woff?t=1686659707874') format('woff'),
-       url('//at.alicdn.com/t/c/font_4111363_hmpyexvxd3o.ttf?t=1686659707874') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.woff2?t=1686898437085') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.woff?t=1686898437085') format('woff'),
+       url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.ttf?t=1686898437085') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tuichuquanping:before {
+  content: "\e8fa";
 }
 
 .icon-baitianmoshimingliangmoshi:before {

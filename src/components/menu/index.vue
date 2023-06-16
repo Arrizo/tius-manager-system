@@ -2,11 +2,12 @@
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-05-31 09:50:18
  * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-14 18:18:50
+ * @LastEditTime: 2023-06-16 10:51:52
  * @FilePath: /tius-manager-system/src/components/menu/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
+<div class="menu-container">
   <a-menu show-collapse-button breakpoint="lg" @collapse="menuCollapse" class="sider-menu" :selected-keys="selectedKeys"
     auto-open-selected>
     <div v-for="(levelOne, index) in routerMenu" :key="`${index}-sub`">
@@ -21,6 +22,7 @@
       <a-menu-item v-else :key="(levelOne.perms as any)" :title="levelOne.menuName"></a-menu-item>
     </div>
   </a-menu>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useUserStore } from '@/store';
@@ -54,11 +56,10 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-::v-deep.sider-menu {
+.menu-container{
   height: 100%;
-
-  .arco-menu-collapse-button {
-    bottom: 20px;
-  }
+:deep(.sider-menu){
+  height: 100%;
 }
+} 
 </style>

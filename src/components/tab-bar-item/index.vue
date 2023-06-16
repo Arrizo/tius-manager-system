@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-06-03 20:08:24
- * @LastEditTime: 2023-06-04 22:23:41
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-16 15:22:38
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/tab-bar-item/index.vue
 -->
@@ -115,7 +115,7 @@ const actionSelect = (val: any) => {
 </script>
 <style lang="scss" scoped>
 .tag-item {
-  background-color: #e3e3e3;
+  background-color: rgb(231, 231, 231);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +129,7 @@ const actionSelect = (val: any) => {
 }
 
 .tag-active {
-  background-color: burlywood;
-  color: #fff;
+  background-color: var(--active-bg-color);
+  color: var(--active-color);;
 }
 </style>

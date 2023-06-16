@@ -79,10 +79,12 @@ $nav-size-height: 60px;
 
   .arco-layout-content {
     min-height: 100vh;
-    overflow-y: hidden;
+    // overflow-y: hidden;
     background: var(--color-fill-2);
     transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
     padding-top: 60px;
+    display: flex;
+    flex-direction: column;
   }
 
 }

@@ -1,8 +1,8 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-28 21:20:36
- * @LastEditTime: 2023-06-14 00:31:36
- * @LastEditors: chenzechao
+ * @LastEditTime: 2023-06-16 14:55:34
+ * @LastEditors: chenzechao chenzc@jw99.net
  * @Description: 
  * @FilePath: /tius-manager-system/src/components/navbar/index.vue
 -->
@@ -44,7 +44,7 @@
         <a-tooltip :content="fullScreen ? '退出全屏模式' : '切换到全屏模式'">
           <a-button shape="circle" @click="actionSelect('full')">
             <template #icon>
-              <i class="iconfont icon-quanping_o"></i>
+              <i class="iconfont" :class="[fullScreen?'icon-tuichuquanping':'icon-quanping_o']"></i>
             </template>
           </a-button>
         </a-tooltip>
