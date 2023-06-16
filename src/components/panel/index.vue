@@ -32,6 +32,9 @@
         &-label-col {
           width: 90px;
         }
+        .arco-input-wrapper,.arco-select{
+          width: 208px;
+        }
       }
     }
   }

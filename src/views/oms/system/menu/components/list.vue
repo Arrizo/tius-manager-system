@@ -2,13 +2,13 @@
  * @ Author: chenzechao
  * @ Create Time: 2023-06-16 16:26:54
  * @ Modified by: chenzechao
- * @ Modified time: 2023-06-16 17:50:18
+ * @ Modified time: 2023-06-16 18:29:52
  * @ Description:
  -->
 
 <template>
   <a-space class="mb10">
-    <a-button v-permission="['oms:orderManagement:recordOrder:add']" type="primary">新增菜单</a-button>
+    <a-button v-permission="['oms:orderManagement:recordOrder:add']" type="primary" @click="handleActoin('add')">新增菜单</a-button>
   </a-space>
   <a-table :data="dataList" :scroll="{ x: 1000, y: '100%' }" :pagination="false" :loading="loading" row-key="id">
     <template #expand-icon="{ expanded, record }">
@@ -48,20 +48,22 @@
           <i :class="['iconfont', `icon-${record.icon}`]"></i>
         </template>
       </a-table-column>
-      <a-table-column title="操作" :width="100" fixed="right">
+      <a-table-column title="操作" :width="120" fixed="right">
         <template #cell="{ record }">
           <a-space :size="14">
-            <!-- <a-link v-permission="['system:menu:edit']" @click="handleActoin('edit', record)" type="text">编辑</a-link>
-              <a-link v-permission="['system:menu:del']" @click="handleActoin('del', record)" type="text"
-                status="danger">删除</a-link> -->
+            <a-link v-permission="['system:menu:edit']" @click="handleActoin('edit', record)" type="text">编辑</a-link>
+            <a-link v-permission="['system:menu:del']" @click="handleActoin('del', record)" type="text"
+              status="danger">删除</a-link>
           </a-space>
         </template>
       </a-table-column>
     </template>
   </a-table>
+  <menu-modal ref="menuModalRef" />
 </template>
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
+import menuModal from './menu-modal.vue';
 const emits = defineEmits<{ (event: 'reload'): void }>()
 const props = defineProps({
   dataList: {
@@ -73,4 +75,8 @@ const props = defineProps({
     default: false
   }
 })
+const menuModalRef=ref()
+const handleActoin = (type: string, record?: any) => {
+  menuModalRef.value.visible=true
+}
 </script>
