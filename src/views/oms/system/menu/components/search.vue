@@ -2,7 +2,7 @@
  * @ Author: chenzechao
  * @ Create Time: 2023-06-16 16:26:59
  * @ Modified by: chenzechao
- * @ Modified time: 2023-06-16 18:20:49
+ * @ Modified time: 2023-06-19 18:26:38
  * @ Description:
  -->
 
@@ -19,6 +19,7 @@
         <a-option value="BUTTON">按钮</a-option>
       </a-select>
     </a-form-item>
+    <div class="asdfa">asdfa</div>
     <a-form-item hide-label>
       <a-space :size="20">
         <a-button type="primary" @click="onSearch" :loading="loading">{{ $t('infoConfig.searchText') }}</a-button>
@@ -53,3 +54,5 @@ onMounted(() => {
   onSearch()
 })
 </script>
+<style lang="scss" scoped>
+</style>

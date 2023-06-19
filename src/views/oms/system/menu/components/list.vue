@@ -2,13 +2,14 @@
  * @ Author: chenzechao
  * @ Create Time: 2023-06-16 16:26:54
  * @ Modified by: chenzechao
- * @ Modified time: 2023-06-16 18:29:52
+ * @ Modified time: 2023-06-19 18:05:55
  * @ Description:
  -->
 
 <template>
   <a-space class="mb10">
-    <a-button v-permission="['oms:orderManagement:recordOrder:add']" type="primary" @click="handleActoin('add')">新增菜单</a-button>
+    <a-button v-permission="['oms:orderManagement:recordOrder:add']" type="primary"
+      @click="handleActoin('add')">新增菜单</a-button>
   </a-space>
   <a-table :data="dataList" :scroll="{ x: 1000, y: '100%' }" :pagination="false" :loading="loading" row-key="id">
     <template #expand-icon="{ expanded, record }">
@@ -59,7 +60,7 @@
       </a-table-column>
     </template>
   </a-table>
-  <menu-modal ref="menuModalRef" />
+  <menu-modal ref="menuModalRef"></menu-modal>
 </template>
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
@@ -75,8 +76,8 @@ const props = defineProps({
     default: false
   }
 })
-const menuModalRef=ref()
+const menuModalRef = ref()
 const handleActoin = (type: string, record?: any) => {
-  menuModalRef.value.visible=true
+  menuModalRef.value.visible = true
 }
 </script>

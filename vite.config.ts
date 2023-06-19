@@ -62,11 +62,11 @@ export default defineConfig({
     }
   },
   css: {
-    // preprocessorOptions: {
-    //   scss: {
-    //     additionalData: `@import "src/assets/styles/var.scss";`
-    //   },
-    // }
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/styles/var.scss";`,
+      },
+    }
   }
 
 })
