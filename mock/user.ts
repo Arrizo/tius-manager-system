@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-20 19:59:39
- * @LastEditTime: 2023-06-07 11:55:26
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-07-26 12:27:45
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/mock/user.ts
  */
@@ -21,6 +21,18 @@ export default [
         data: {
           token: data,
           vakue: vakue
+        }
+      }
+    }
+  },{
+    url:'/mock/upload',
+    method:'post',
+    response:(data:any)=>{
+      return {
+        code:0,
+        msg:'成功',
+        data:{
+          data
         }
       }
     }
