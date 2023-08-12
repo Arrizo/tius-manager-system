@@ -1,8 +1,8 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-06-07 12:12:19
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-07-26 13:44:44
+ * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
  */
@@ -54,7 +54,7 @@ export default defineConfig({
         // rewrite:(path)=>path.replace('/proxy_prefix','')
       },
       '/mock':{
-        target:'http://localhost:5174/',
+        target:'http://localhost:5173/',
         changeOrigin:true,
         // rewrite:(path)=>path.replace('','')
       },

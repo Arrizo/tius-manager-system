@@ -2,15 +2,15 @@
 <!--
  * @Author: chenzechao chenzc@jw99.net
  * @Date: 2023-06-05 20:27:46
- * @LastEditors: chenzechao chenzc@jw99.net
- * @LastEditTime: 2023-06-16 15:36:25
+ * @LastEditors: chenzechao
+ * @LastEditTime: 2023-07-26 14:29:45
  * @FilePath: /tius-manager-system/src/views/oms/system/role/components/list.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
     <a-space class="mb10">
       <a-button v-permission="['oms:orderManagement:recordOrder:add']" type="primary">新增</a-button>
-      <a-button v-permission="['oms:orderManagement:recordOrder:add']">导出</a-button>
+      <a-button v-permission="['oms:orderManagement:recordOrder:add']" @click="exportFile">导出</a-button>
     </a-space>
   <a-table :data="dataList" :pagination="paginationOption" @page-change="changePage" @page-size-change="changeSize" :scroll="{x:1000,y:'100%'}">
     <template #columns>
@@ -52,9 +52,12 @@
         </a-table-column>
       </template>
   </a-table>
+  <file-modal ref="fileRef" />
 </template>
 <script lang="ts" setup>
+import FileModal from './file-modal.vue'
 import { reactive, ref, computed } from 'vue';
+const fileRef=ref()
 const emits = defineEmits<{ (event: 'on-search', data: any): void }>()
 const props = defineProps({
   dataList: {
@@ -86,10 +89,14 @@ const paginationOption = computed(() => {
     current: props.pageNumber
   }
 })
+
 const changePage = (page: number) => {
   emits('on-search',{pageNum:page})
 }
 const changeSize = (size: number) => {
   emits('on-search',{pageSize:size})
+}
+const exportFile=()=>{
+  fileRef.value.visible=true
 }
 </script>
