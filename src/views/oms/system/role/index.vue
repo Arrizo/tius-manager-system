@@ -1,10 +1,10 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-05-31 23:45:57
- * @LastEditTime: 2023-06-16 16:04:11
- * @LastEditors: chenzechao chenzc@jw99.net
+ * @LastEditTime: 2023-09-17 00:15:53
+ * @LastEditors: chenzechao
  * @Description: 
- * @FilePath: /tius-manager-system/src/view/oms/system/user/index.vue
+ * @FilePath: /tius-manager-system/src/views/oms/system/role/index.vue
 -->
 <template>
   <panel>
@@ -23,7 +23,7 @@ import List from './components/list.vue'
 import Panel from '@/components/panel/index.vue'
 import { RoleSearchForm,RoleSearchResResultItem } from '@/types/system/role'
 import { getList } from '@/api/system/role'
-import { reactive, ref } from 'vue'
+import { reactive, ref,onMounted } from 'vue'
 import { Message } from '@arco-design/web-vue'
 let form = reactive<RoleSearchForm>(new RoleSearchForm())
 const dataList = ref<Array<RoleSearchResResultItem>>([])
@@ -46,9 +46,5 @@ const initData = async (data: RoleSearchForm) => {
   } finally {
     loading.value = false
   }
-
-
-
-
 }
 </script>

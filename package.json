@@ -7,7 +7,7 @@
     "server:dev": "vite --mode dev",
     "server:proxy": "vite --mode proxy",
     "build": "vite build",
-    "build:electron":"rimraf dist && vite build && electron-builder",
+    "build:electron": "rimraf dist && vite build && electron-builder",
     "preview": "vite preview",
     "server:ese": "node ./config/ese.js --watch"
   },
@@ -44,6 +44,7 @@
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.0.0",
     "electron": "^26.2.1",
+    "electron-builder": "^24.6.4",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-compression": "^0.5.1",
@@ -58,7 +59,7 @@
       "config": ".cz-config.ts"
     }
   },
-"build": {
+  "build": {
     "appId": "com.servermonitor.desktop",
     "productName": "czc",
     "asar": true,
