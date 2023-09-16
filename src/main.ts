@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-06-12 23:38:18
+ * @LastEditTime: 2023-09-16 22:55:41
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/main.ts
@@ -28,3 +28,4 @@ app.use(i18n)
 app.use(directive)
 app.component('SvgIcon',SvgIcon)
 app.mount('#app')
+
