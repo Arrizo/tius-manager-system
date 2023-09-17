@@ -1,1 +1,39 @@
-"use strict";const e=require("electron"),t=require("path"),n=()=>{const o=new e.BrowserWindow({width:900,height:600,webPreferences:{contextIsolation:!1,nodeIntegration:!0,preload:t.join(__dirname,"../electron/preload.ts")}});if(o.webContents.openDevTools(),e.app.isPackaged)o.loadFile(t.join(__dirname,"../dist/index.html"));else{let i="http://localhost:5173";o.loadURL(i)}};e.app.whenReady().then(()=>{n(),e.app.on("activate",()=>{e.BrowserWindow.getAllWindows().length==0&&n()})});e.app.on("window-all-closed",()=>{process.platform!=="darwin"&&e.app.quit()});
+"use strict";
+const electron = require("electron");
+const path = require("path");
+const createWindow = () => {
+  const win = new electron.BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true,
+      preload: path.join(__dirname, "../electron/preload.js")
+    }
+  });
+  win.webContents.openDevTools();
+  if (electron.app.isPackaged) {
+    win.loadFile(path.join(__dirname, "../dist/index.html"));
+  } else {
+    let url = "http://localhost:5173";
+    win.loadURL(url);
+  }
+  setTimeout(() => {
+    win.webContents.send("like", { age: 3232 });
+  }, 4e3);
+};
+electron.app.whenReady().then(() => {
+  createWindow();
+  electron.app.on("activate", () => {
+    if (electron.BrowserWindow.getAllWindows().length == 0)
+      createWindow();
+  });
+});
+electron.ipcMain.on("keyName", (data, event) => {
+  console.log(data, event);
+});
+electron.app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    electron.app.quit();
+  }
+});

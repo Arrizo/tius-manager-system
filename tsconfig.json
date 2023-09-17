@@ -25,6 +25,7 @@
     "src/**/*.d.ts",
     "electron/**/*.ts",
     "src/**/*.vue",
+    "electron/preload.js",
   ],
   "exclude": ["node_modules","dist"],
 }

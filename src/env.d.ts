@@ -1,3 +1,11 @@
+/*
+ * @Author: chenzechao
+ * @Date: 2023-05-21 22:29:43
+ * @LastEditTime: 2023-09-17 18:08:44
+ * @LastEditors: chenzechao
+ * @Description: 
+ * @FilePath: /tius-manager-system/src/env.d.ts
+ */
 /// <reference types="vite/client" />
 
 declare module '*.vue' {
@@ -9,5 +17,3 @@ declare module '*.vue' {
 interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string;
 }
-//  引入打印
-declare module 'vue3-print-nb'

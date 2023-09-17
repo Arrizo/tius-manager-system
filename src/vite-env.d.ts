@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-07-26 15:26:58
+ * @LastEditTime: 2023-09-17 18:08:48
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/vite-env.d.ts
@@ -16,3 +16,5 @@ declare module '*.vue' {
 declare module 'nprogress'
 declare module 'crypto-js'
 declare module 'spark-md5'
+//  引入打印
+declare module 'vue3-print-nb'

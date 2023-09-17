@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-09-16 23:21:01
+ * @LastEditTime: 2023-09-17 18:18:58
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
@@ -24,7 +24,7 @@ export default defineConfig({
         drop_debugger:true //打包时删除 debugger
       },
       output:{
-        comments:true  // 去掉注释内容
+        comments:true,  // 去掉注释内容
       },
     },
     // 依赖模块打包成了一个 JS 文件
@@ -39,6 +39,7 @@ export default defineConfig({
     },
     // 打包警戒提示
     chunkSizeWarningLimit: 2000,
+    emptyOutDir:false
   },
   resolve: {
     alias: {
