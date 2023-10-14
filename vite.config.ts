@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-09-17 18:18:58
+ * @LastEditTime: 2023-09-19 19:37:38
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/vite.config.ts
@@ -14,8 +14,9 @@ import configMockServerPlugin from './config/plugins/mockServe'
 // import configImageminPlugin from './config/plugins/compression'
 import configElectron  from './config/plugins/electron'
 import renderer from 'vite-plugin-electron-renderer'
+import cesium from 'vite-plugin-cesium';
 export default defineConfig({
-  plugins: [vue(), configCompressionPlugin(), configMockServerPlugin(),configElectron(),renderer()],
+  plugins: [vue(), configCompressionPlugin(), configMockServerPlugin(), configElectron(),cesium(),renderer()],
   build:{
     cssCodeSplit:false, //css分割
     terserOptions:{

@@ -1,7 +1,7 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:08:24
- * @LastEditTime: 2023-09-17 18:08:48
+ * @LastEditTime: 2023-09-17 23:03:58
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/vite-env.d.ts
@@ -18,3 +18,14 @@ declare module 'crypto-js'
 declare module 'spark-md5'
 //  引入打印
 declare module 'vue3-print-nb'
+
+
+export interface IElectronAPI{
+  loadPreferences:()=>Promise<void>
+}
+
+declare global{
+  interface Window{
+    electronApi: IElectronAPI
+  }
+}
