@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4111363 */
-  src: url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.woff2?t=1686898437085') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.woff?t=1686898437085') format('woff'),
-       url('//at.alicdn.com/t/c/font_4111363_6mbpqpn9fyy.ttf?t=1686898437085') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4111363_ljtr4xjdm8n.woff2?t=1698580566448') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4111363_ljtr4xjdm8n.woff?t=1698580566448') format('woff'),
+       url('//at.alicdn.com/t/c/font_4111363_ljtr4xjdm8n.ttf?t=1698580566448') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tupian:before {
+  content: "\eac4";
+}
+
+.icon-shouyelunbotu:before {
+  content: "\e627";
+}
+
+.icon-zujian-zuoyouhuadongtu:before {
+  content: "\e604";
+}
+
+.icon-tuwendaohang:before {
+  content: "\e608";
+}
+
+.icon-a-ziyuan521:before {
+  content: "\e78d";
 }
 
 .icon-tuichuquanping:before {
