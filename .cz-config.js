@@ -1,10 +1,10 @@
 /*
  * @Author: chenzechao
  * @Date: 2023-05-14 12:22:06
- * @LastEditTime: 2023-11-19 13:00:10
+ * @LastEditTime: 2023-11-19 13:10:22
  * @LastEditors: chenzechao
  * @Description:
- * @FilePath: /tius-manager-system/.cz-config.ts
+ * @FilePath: /tius-manager-system/.cz-config.js
  */
 module.exports = {
   // 可选类型
@@ -54,6 +54,12 @@ module.exports = {
   ],
 
   // 步骤
+  scopes: [
+    { name: "模块1" },
+    { name: "模块2" },
+    { name: "模块3" },
+    { name: "模块4" },
+  ],
 
   messages: {
     type: "请选择提交的类型：",
