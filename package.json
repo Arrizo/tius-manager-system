@@ -16,6 +16,7 @@
     "@types/puppeteer": "^7.0.4",
     "axios": "^1.4.0",
     "crypto-js": "^4.1.1",
+    "cz-conventional-changelog": "^3.3.0",
     "element-plus": "^2.3.4",
     "init": "0.1.2",
     "js-base64": "^3.7.5",
@@ -47,6 +48,11 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "^3.0.0",
     "vue-tsc": "^1.4.2"
+  },
+  "config": {
+    "commitizen":{
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "build": {
     "appId": "com.servermonitor.desktop",
