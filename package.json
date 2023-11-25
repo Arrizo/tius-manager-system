@@ -9,7 +9,8 @@
     "build": "vite build",
     "build:electron": "rimraf dist && vite build && electron-builder",
     "preview": "vite preview",
-    "server:ese": "node ./config/ese.js --watch"
+    "server:ese": "node ./config/ese.js --watch",
+    "commit": "cz"
   },
   "dependencies": {
     "@types/crypto-js": "^4.1.1",
@@ -39,6 +40,9 @@
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.46.0",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
+    "@commitlint/cz-commitlint": "^18.4.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "cz-customizable": "^7.0.0",
     "electron": "^26.2.1",
@@ -52,7 +56,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-customizable"
+      "path": "node_modules/@commitlint/cz-commitlint"
     }
   },
   "build": {
