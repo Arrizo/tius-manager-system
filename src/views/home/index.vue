@@ -1,7 +1,7 @@
 <!--
  * @Author: chenzechao
  * @Date: 2023-10-22 20:17:58
- * @LastEditTime: 2023-11-05 21:01:27
+ * @LastEditTime: 2023-12-12 22:18:24
  * @LastEditors: chenzechao
  * @Description: 
  * @FilePath: /tius-manager-system/src/views/home/index.vue
@@ -24,83 +24,64 @@
       </section>
     </main>
     <footer> -->
-  <render></render>
+  <!-- <render></render> -->
   <!-- </footer> -->
   <!-- </section> -->
+  <!-- <img :src="previewImag" alt="" /> -->
+  <!-- <video
+    id="video"
+    width="320"
+    height="240"
+    preload
+    autoplay
+    loop
+    muted
+  ></video>
+  <canvas id="canvas" width="320" height="240"></canvas> -->
+
+  <!-- <section class="ssssd">
+    <img :src="imageSrc" alt="" />
+    <div>112123</div>
+    <div>
+      <div v-html="preview"></div>
+
+      <div class="ddd">
+        <vue-cropper
+          :img="imageUrl"
+          autoCrop
+          infoTrue
+          full
+          :outputSize="0.9"
+          centerBox
+          ref="cropper"
+          @realTime="realTime"
+        />
+      </div>
+    </div>
+  </section> -->
+  <!-- <input type="file" @change="handleFileChange" />
+  <button @click="cropImage">Crop Image</button> -->
+  <div class=""></div>
+  <img
+    src="./3e711e60cffb1033cb02933fe218593d.jp2"
+    alt=""
+    height="300"
+    width="300"
+    data-display-polyfill-info="true"
+  />
 </template>
 
 <script setup lang="ts">
 import { reactive, h, ref } from "vue";
-import left from "./components/left/index.vue";
-import content from "./components/main/index.vue";
-import right from "./components/right/index.vue";
-import configComs from "./componentData";
-import { Button } from "@arco-design/web-vue";
-const state = reactive({
-  pageConfig: {
-    left: configComs,
-    right: [],
-  },
-  text: "",
-  text2: "",
+import loadOpenJPEG from "./jp2-polyfill.js";
+import { onMounted } from "vue";
+import { nextTick } from "vue";
+const imageUrl = ref();
+onMounted(() => {
+  nextTick(() => {
+    loadOpenJPEG();
+  });
 });
-const flag = ref(true);
-const submit = () => {
-  console.log(state, 11);
-};
-const back = () => {
-  console.log("返回");
-};
-const render = (cxt) => {
-  return h(
-    "section",
-    {
-      class: ["design", flag.value ? "name" : ""],
-      style: { color: "red", fontSize: "20px" },
-    },
-    [
-      h("header", [
-        h(Button, { onclick: back }, "返回"),
-        h(
-          Button,
-          {
-            type: "primary",
-            onclick: submit,
-          },
-          "提交"
-        ),
-      ]),
-      h("main", [
-        h(
-          "section",
-          { class: "left" },
-          h(left, {
-            modelValue: state.text,
-            ["onUpdate:modelValue"]: (text) => {
-              state.text = text;
-            },
-            text2: state.text2,
-            ["onUpdate:text2"]: (text) => {
-              state.text2 = text;
-            },
-            value: state.pageConfig.left,
-          })
-        ),
-        h(
-          "section",
-          { class: "content" },
-          h(content, { value: state.pageConfig.right })
-        ),
-        h(
-          "section",
-          { class: "right" },
-          h(right, { value: state.pageConfig.right })
-        ),
-      ]),
-      h("footer", "底部"),
-    ]
-  );
-};
 </script>
 <style lang="scss">
 .design {
@@ -120,5 +101,9 @@ const render = (cxt) => {
       width: 200px;
     }
   }
+}
+.ddd {
+  height: 400px;
+  width: 400px;
 }
 </style>
